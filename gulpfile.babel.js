@@ -8,6 +8,7 @@ import {stream as wiredep} from 'wiredep';
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
+/*
 gulp.task('styles', () => {
   return gulp.src('app/styles/*.scss')
     .pipe($.plumber())
@@ -22,6 +23,7 @@ gulp.task('styles', () => {
     .pipe(gulp.dest('.tmp/styles'))
     .pipe(reload({stream: true}));
 });
+*/
 
 function lint(files, options) {
   return () => {
@@ -53,8 +55,8 @@ gulp.task('views', function () {
     .pipe(reload({stream: true}));
 });
 
-gulp.task('stylus', function() {
-  return gulp.src('styl/main.styl')
+gulp.task('styles', function() {
+  return gulp.src('app/styles/*.styl')
     .pipe($.plumber())
     .pipe($.stylus({compress: true}))
     .pipe(gulp.dest('.tmp/styles'))
@@ -67,7 +69,7 @@ gulp.task('scripts', function () {
     .pipe(gulp.dest('.tmp/scripts'));
 });
 
-gulp.task('html', ['scripts', 'stylus', 'styles', 'views'], () => {
+gulp.task('html', ['scripts', 'stylus', 'views'], () => {
   const assets = $.useref.assets({searchPath: ['.tmp', 'app', '.']});
 
   return gulp.src(['app/*.html', '.tmp/*.html'])
@@ -116,7 +118,7 @@ gulp.task('extras', () => {
 
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
-gulp.task('serve', ['scripts', 'stylus', 'views', 'styles', 'fonts'], () => {
+gulp.task('serve', ['scripts', 'styles', 'views', 'fonts'], () => {
   browserSync({
     notify: false,
     port: 9000,
@@ -139,7 +141,7 @@ gulp.task('serve', ['scripts', 'stylus', 'views', 'styles', 'fonts'], () => {
   ]).on('change', reload);
 
   gulp.watch('app/**/*.jade', ['views']);  
-  gulp.watch('app/styl/**/*.styl', ['stylus']);
+  gulp.watch('app/styles/**/*.styl', ['styles']);
   gulp.watch('app/scripts/**/*.coffee', ['scripts', reload]);  
   gulp.watch('app/fonts/**/*', ['fonts']);
   gulp.watch('bower.json', ['wiredep', 'fonts']);
@@ -174,12 +176,14 @@ gulp.task('serve:test', () => {
 
 // inject bower components
 gulp.task('wiredep', () => {
+  /*
   gulp.src('app/styles/*.scss')
     .pipe(wiredep({
       ignorePath: /^(\.\.\/)+/
     }))
     .pipe(gulp.dest('app/styles'));
-
+  */
+  
   gulp.src('app/layouts/*.jade')
     .pipe(wiredep({
       exclude: ['bootstrap-sass'],

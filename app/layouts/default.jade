@@ -37,15 +37,11 @@ html.no-js(lang='')
         ul.nav.nav-pills.pull-right
           li.active
             a(href='#') Home
-          |           
           li
             a(href='#') About
-          |           
           li
             a(href='#') Contact
-        |         
         h3.text-muted recipe stylus
-      |       
       .jumbotron
         h1 &apos;Allo, &apos;Allo!
         p.lead Always a pleasure scaffolding your apps.
@@ -64,36 +60,29 @@ html.no-js(lang='')
       e.src='https://www.google-analytics.com/analytics.js';
       r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
       ga('create','UA-XXXXX-X');ga('send','pageview');
+    
     // build:js scripts/vendor.js
     // bower:js
     script(src='/bower_components/jquery/dist/jquery.js')
+    script(src='/bower_components/knockout.js/knockout.js')     
     // endbower
     // endbuild
+    
     // build:js scripts/plugins.js
-    script(src='/bower_components/bootstrap-sass/assets/javascripts/bootstrap/affix.js')
-    |     
-    script(src='/bower_components/bootstrap-sass/assets/javascripts/bootstrap/alert.js')
-    |     
-    script(src='/bower_components/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js')
-    |     
-    script(src='/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js')
-    |     
-    script(src='/bower_components/bootstrap-sass/assets/javascripts/bootstrap/modal.js')
-    |     
-    script(src='/bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js')
-    |     
-    script(src='/bower_components/bootstrap-sass/assets/javascripts/bootstrap/button.js')
-    |     
-    script(src='/bower_components/bootstrap-sass/assets/javascripts/bootstrap/popover.js')
-    |     
-    script(src='/bower_components/bootstrap-sass/assets/javascripts/bootstrap/carousel.js')
-    |     
-    script(src='/bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js')
-    |     
-    script(src='/bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js')
-    |     
-    script(src='/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js')
+    script(src='/bower_components/bootstrap-stylus/js/affix.js')
+    script(src='/bower_components/bootstrap-stylus/js/alert.js')
+    script(src='/bower_components/bootstrap-stylus/js/dropdown.js')
+    script(src='/bower_components/bootstrap-stylus/js/tooltip.js')
+    script(src='/bower_components/bootstrap-stylus/js/modal.js')
+    script(src='/bower_components/bootstrap-stylus/js/transition.js')
+    script(src='/bower_components/bootstrap-stylus/js/button.js')
+    script(src='/bower_components/bootstrap-stylus/js/popover.js')
+    script(src='/bower_components/bootstrap-stylus/js/carousel.js')
+    script(src='/bower_components/bootstrap-stylus/js/scrollspy.js')
+    script(src='/bower_components/bootstrap-stylus/js/collapse.js')
+    script(src='/bower_components/bootstrap-stylus/js/tab.js')  
     // endbuild
+    
     // build:js scripts/main.js
     script(src='scripts/main.js')
     // endbuild

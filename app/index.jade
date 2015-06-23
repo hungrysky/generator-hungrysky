@@ -11,3 +11,11 @@ block content
       p Sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.
       h4 Modernizr
       p Modernizr is an open-source JavaScript library that helps you build the next generation of HTML5 and CSS3-powered websites.
+  .row
+    p First name 
+      input(data-bind="value: firstName")
+    p Last name 
+      input(data-bind="value: lastName")
+    h2 Hello, 
+      span(data-bind="text: fullName")
+      | !
