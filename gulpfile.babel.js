@@ -8,7 +8,6 @@ import {stream as wiredep} from 'wiredep';
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
-/*
 gulp.task('styles', () => {
   return gulp.src('app/styles/*.scss')
     .pipe($.plumber())
@@ -23,7 +22,6 @@ gulp.task('styles', () => {
     .pipe(gulp.dest('.tmp/styles'))
     .pipe(reload({stream: true}));
 });
-*/
 
 function lint(files, options) {
   return () => {
@@ -57,9 +55,10 @@ gulp.task('views', function () {
 
 gulp.task('stylus', function() {
   return gulp.src('styl/main.styl')
-    .pipe(plumber())
-    .pipe(stylus({compress: true}))
-    .pipe(gulp.dest('.tmp/styles'));
+    .pipe($.plumber())
+    .pipe($.stylus({compress: true}))
+    .pipe(gulp.dest('.tmp/styles'))
+    .pipe(reload({stream: true}));
 });
 
 gulp.task('scripts', function () {
@@ -68,7 +67,7 @@ gulp.task('scripts', function () {
     .pipe(gulp.dest('.tmp/scripts'));
 });
 
-gulp.task('html', ['scripts', 'stylus', 'views'], () => {
+gulp.task('html', ['scripts', 'stylus', 'styles', 'views'], () => {
   const assets = $.useref.assets({searchPath: ['.tmp', 'app', '.']});
 
   return gulp.src(['app/*.html', '.tmp/*.html'])
@@ -108,7 +107,7 @@ gulp.task('fonts', () => {
 gulp.task('extras', () => {
   return gulp.src([
     'app/*.*',
-    '!app/*.html'
+    '!app/*.html',
     '!app/*.jade'
   ], {
     dot: true
@@ -117,7 +116,7 @@ gulp.task('extras', () => {
 
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
-gulp.task('serve', ['scripts', 'stylus', 'views', 'fonts'], () => {
+gulp.task('serve', ['scripts', 'stylus', 'views', 'styles', 'fonts'], () => {
   browserSync({
     notify: false,
     port: 9000,
